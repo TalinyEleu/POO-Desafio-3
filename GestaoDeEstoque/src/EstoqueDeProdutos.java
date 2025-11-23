@@ -1,4 +1,4 @@
-import java.io.Serializable; // Essa biblioteca Serializable permite que a exportação de bináro
+import java.io.Serializable; // Essa biblioteca Serializable permite que seja exportado o estado atual do objeto em arquivo binário
 
 public class EstoqueDeProdutos implements Serializable {
 	private int codigo;
@@ -18,3 +18,4 @@ public class EstoqueDeProdutos implements Serializable {
  	
 
 }
+
