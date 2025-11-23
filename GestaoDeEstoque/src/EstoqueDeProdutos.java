@@ -15,7 +15,30 @@ public class EstoqueDeProdutos implements Serializable {
  		this.quantidade = quantidade;
  	} 
  	
+ 	//Métodos getters e setters dos atributos codigo, nome e quantidade
+ 	public int getCodigo() {
+ 		return codigo;
+ 	}
  	
+ 	public void setCodigo(int codigo) {
+ 		this.codigo = codigo;
+ 	}
+ 	
+ 	public String getNome() {
+ 		return nome;
+ 	}
+ 	
+ 	public void setNome(String nome) { 
+ 		this.nome = nome;
+ 	}
+ 	
+ 	public int getQuantidade() {
+ 		return quantidade;
+ 	}
+ 	
+ 	public void setQuantidade(int quantidade) {
+ 		this.quantidade = quantidade;
+ 	}
 
 }
 
