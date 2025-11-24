@@ -8,15 +8,21 @@ package estoque;
 // INTEGRANTES:(Nataliny Eleutério da Silva / Jessé Oliveira de Jesus)
 // Arquivo: classe java para produto.
 
-import java.io.Serializable;
+/* Serializable: Essa biblioteca permite que seja exportado o estado atual do objeto
+ em arquivo binário */
+import java.io.Serializable; 
 
 public class Produto implements Serializable {
 	private int codigo;
 	private String nome;
 	private int quantidade;
+
+	//Construtor padrão
+ 	public Produtos() {} 
 	
-	public Produto(String nome, int quantidade) {
-		 // construtor com Validação 
+	public Produto(int codigo, String nome, int quantidade) {
+		 //Construtor com Validação 
+		this.codigo = codigo;
         if (nome == null || nome.trim().isEmpty()) {
         	throw new IllegalArgumentException("Nome inválido ou não informado");
         }
@@ -36,6 +42,7 @@ public class Produto implements Serializable {
 		//desenvolver codigo;
 	}
 
+	//Métodos getters e setters dos atributos codigo, nome e quantidade
 	public int getQuantidadeEstoque() {
 		return quantidade;
 	}
