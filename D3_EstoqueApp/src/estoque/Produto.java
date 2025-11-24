@@ -13,10 +13,15 @@ import java.io.Serializable;
 public class Produto implements Serializable {
 	private int codigo;
 	private String nome;
-	private float quantidadeEstoque;
+	private int quantidade;
+
+	//Construtor padrão
+	public Produto() {} 
 	
-	public Produto(String nome, float quantidade) {
+	public Produto(int codigo, String nome, int quantidade) {
 		 // construtor com Validação 
+
+		this.codigo = codigo;
         if (nome == null || nome.trim().isEmpty()) {
         	throw new IllegalArgumentException("Nome inválido ou não informado");
         }
@@ -25,23 +30,23 @@ public class Produto implements Serializable {
         }
         
 		this.nome = nome ;
-		this.quantidadeEstoque = quantidade;
+		this.quantidade = quantidade;
 	}
 	
-	public void atualizarQuantidade(float quantidade) {
-		this.quantidadeEstoque += quantidade;
+	public void atualizarQuantidade(int quantidade) {
+		this.quantidade += quantidade;
 	}
 	
-	public void excluirEstoque(float quantidade) {
+	public void excluirEstoque(int quantidade) {
 		//desenvolver codigo;
 	}
 
-	public float getQuantidadeEstoque() {
-		return quantidadeEstoque;
+	public int getQuantidadeEstoque() {
+		return quantidade;
 	}
 
-	public void setQuantidadeEstoque(float quantidadeEstoque) {
-		this.quantidadeEstoque = quantidadeEstoque;
+	public void setQuantidadeEstoque(int quantidade) {
+		this.quantidade = quantidade;
 	}
 
 	public int getCodigo() {
@@ -55,6 +60,6 @@ public class Produto implements Serializable {
 	public void imprimirRelatorio() {
 		System.out.println("Código: " + this.codigo);
 		System.out.println("Nome: " + this.nome);
-		System.out.println("Quantidade: " + this.quantidadeEstoque);
+		System.out.println("Quantidade: " + this.quantidade);
 	}
 }
