@@ -8,21 +8,15 @@ package estoque;
 // INTEGRANTES:(Nataliny Eleutério da Silva / Jessé Oliveira de Jesus)
 // Arquivo: classe java para produto.
 
-/* Serializable: Essa biblioteca permite que seja exportado o estado atual do objeto
- em arquivo binário */
-import java.io.Serializable; 
+import java.io.Serializable;
 
 public class Produto implements Serializable {
 	private int codigo;
 	private String nome;
-	private int quantidade;
-
-	//Construtor padrão
- 	public Produtos() {} 
+	private float quantidadeEstoque;
 	
-	public Produto(int codigo, String nome, int quantidade) {
-		 //Construtor com Validação 
-		this.codigo = codigo;
+	public Produto(String nome, float quantidade) {
+		 // construtor com Validação 
         if (nome == null || nome.trim().isEmpty()) {
         	throw new IllegalArgumentException("Nome inválido ou não informado");
         }
@@ -31,24 +25,23 @@ public class Produto implements Serializable {
         }
         
 		this.nome = nome ;
-		this.quantidade = quantidade;
+		this.quantidadeEstoque = quantidade;
 	}
 	
-	public void atualizarQuantidade(int quantidade) {
-		this.quantidade += quantidade;
+	public void atualizarQuantidade(float quantidade) {
+		this.quantidadeEstoque += quantidade;
 	}
 	
-	public void excluirEstoque(int quantidade) {
+	public void excluirEstoque(float quantidade) {
 		//desenvolver codigo;
 	}
 
-	//Métodos getters e setters dos atributos codigo, nome e quantidade
-	public int getQuantidadeEstoque() {
-		return quantidade;
+	public float getQuantidadeEstoque() {
+		return quantidadeEstoque;
 	}
 
-	public void setQuantidadeEstoque(int quantidade) {
-		this.quantidade = quantidade;
+	public void setQuantidadeEstoque(float quantidadeEstoque) {
+		this.quantidadeEstoque = quantidadeEstoque;
 	}
 
 	public int getCodigo() {
@@ -62,6 +55,6 @@ public class Produto implements Serializable {
 	public void imprimirRelatorio() {
 		System.out.println("Código: " + this.codigo);
 		System.out.println("Nome: " + this.nome);
-		System.out.println("Quantidade: " + this.quantidade);
+		System.out.println("Quantidade: " + this.quantidadeEstoque);
 	}
 }
