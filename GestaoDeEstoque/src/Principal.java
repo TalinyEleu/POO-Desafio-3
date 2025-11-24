@@ -1,5 +1,7 @@
 package estoque;
 
+import estoque.TelaInicial;
+
 //CURSO: GRADS | STDC
 //UC: GR POO - 2025/2 - 35761 - Programação Orientada a Objetos
 //DESAFIO: 3 Gerenciamento de Estoque
@@ -11,7 +13,7 @@ public class Principal {
 	//inicializa a interface gráfica
 	
 	public static void main(String[] args) {
-		new TelaInicial();
+		new TelaInicialal();
 	}
 
 }

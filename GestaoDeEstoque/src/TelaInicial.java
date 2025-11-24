@@ -22,7 +22,7 @@ public class TelaInicial  extends JFrame {
 		private JPanel panel;
 		
 		public TelaInicial() {
-			setTitle("Gestão de estoque");
+			setTitle("Sistema de Gestão de Estoque");
 			setLayout(new FlowLayout());
 			
 			this.panel = new JPanel();
@@ -42,6 +42,7 @@ public class TelaInicial  extends JFrame {
 			setPreferredSize(new Dimension(500, 800));
 			setVisible(true);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
+			setLocationRelativeTo(null);
 			
 	}
 		private void criarBotao(String label, ActionListener handler) {
@@ -50,12 +51,16 @@ public class TelaInicial  extends JFrame {
 			button.setPreferredSize(new Dimension(300, 80));
 			this.panel.add(button);
 		}
+
+		/*======================================
+			        HANDLERS DOS BOTÕES
+		  ====================================== */
 		
 		private class ButtonCadastrarHandler implements ActionListener{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				new TelaCadastrar();
 			}
 		}
 		
@@ -64,7 +69,7 @@ public class TelaInicial  extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Listagem();
+				new TelaListar();
 			}
 		}
 		
@@ -72,7 +77,7 @@ public class TelaInicial  extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				new TelaExcluir();
 			}
 		}
 		
@@ -80,7 +85,7 @@ public class TelaInicial  extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				new TelaExportar();
 			}
 		}
 		
