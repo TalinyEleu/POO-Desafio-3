@@ -60,7 +60,7 @@ public class Listagem extends JFrame {
 		this.panel.add(button);
 	}
 	
-	
+
 	private void criarList() {
 		listProdutosModel = new DefaultListModel<Produto>();
 		listProdutos = new JList<Produto>(listProdutosModel);
