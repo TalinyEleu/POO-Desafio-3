@@ -16,9 +16,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class TelaInicial  extends JFrame {
 
+		private final ProdutoDAO dao = new ProdutotDAO();	
 		private JPanel panel;
 		
 		public TelaInicial() {
@@ -60,7 +62,7 @@ public class TelaInicial  extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Cadastro();
+				SwingUtilities.invokeLater(() -> new Cadastrar());
 			}
 		}
 				
@@ -68,7 +70,7 @@ public class TelaInicial  extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Listagem();
+				SwingUtilities.invokeLater(() -> new Listagem());
 			}
 		}
 		
@@ -76,7 +78,7 @@ public class TelaInicial  extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Excluir();
+				SwingUtilities.invokeLater(() -> new Excluir());
 			}
 		}
 		
@@ -84,7 +86,7 @@ public class TelaInicial  extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Exportar();
+				SwingUtilities.invokeLater(() -> new Exportar());
 			}
 		}
 		
