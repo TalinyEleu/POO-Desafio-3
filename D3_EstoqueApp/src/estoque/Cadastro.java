@@ -33,7 +33,7 @@ public class Cadastro {
 		
 		this.panel = new JPanel();
 		this.panel.setLayout(new FlowLayout());
-		this.panel.setPreferredSize(new Dimension(500,500));
+		this.panel.setPreferredSize(new Dimension(500, 500));
 		this.add(panel);
 		
 		criarTextFieldNome("Nome do produto");
