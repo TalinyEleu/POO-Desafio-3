@@ -29,7 +29,7 @@ public class Produto implements Serializable {
         	throw new IllegalArgumentException("Quantidade inválida ou não informada");
         }
         
-		this.nome = nome ;
+		this.nome = nome;
 		this.quantidade = quantidade;
 	}
 	
@@ -57,6 +57,11 @@ public class Produto implements Serializable {
 		return nome;
 	}
 	
+	@Override
+    public String toString() {
+        return String.format("%d - %s (qtd=%d)", codigo == null ? -1 : codigo, nome, quantidade);
+    }
+
 	public void imprimirRelatorio() {
 		System.out.println("Código: " + this.codigo);
 		System.out.println("Nome: " + this.nome);
