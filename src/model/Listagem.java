@@ -33,7 +33,7 @@ public class Listagem extends JFrame {
 	
 	public Listagem() {
 		
-		setTitle("Listagem de estoque");
+		setTitle("ListagemView de estoque");
 		setLayout(new FlowLayout());
 		
 		this.panel = new JPanel();

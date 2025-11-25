@@ -94,9 +94,11 @@ public class CadastroProduto extends JFrame {
 	private Produto criarObjetProduto() {
 		if(!textFieldNome.getText().isEmpty()){
 			Produto produto = new Produto(textFieldNome.getText(), Integer.parseInt(textFieldQuantidade.getText()) ); 
+			return produto;
 		}
+		return null;
 	
-		return produto;
+		
 	}
 	
 
@@ -132,6 +134,9 @@ public class CadastroProduto extends JFrame {
 
 	}
 	
+	public static void main(String[] args) {
+		new CadastroProduto();
+	}
 	}
 	
 
