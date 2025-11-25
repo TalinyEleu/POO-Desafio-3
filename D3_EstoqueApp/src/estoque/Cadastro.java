@@ -28,20 +28,22 @@ public class Cadastro {
 	
 	public Cadastro() {
 		
-		setTitle("Cadastro de produtos");
+		setTitle(title: "Cadastro de produtos");
 		setLayout(new FlowLayout());
 		
 		this.panel = new JPanel();
 		this.panel.setLayout(new FlowLayout());
 		this.panel.setPreferredSize(new Dimension(500, 500));
-		this.add(panel);
+		add(this.panel);
 		
 		criarTextFieldNome("Nome do produto");
 		criarTextFieldQuantidade("Quantidada em estoque");
 		
 		setSize(new Dimension(500,500));
-		setPreferredSize(new Dimension(500,500));
-		
+		setPreferredSize(new Dimension(500, 500));
+		setVisible(true);
+		setLocationRelativeTo(null);
+
 		
 	}
 	
