@@ -1,4 +1,4 @@
-package estoque;
+package model;
 
 //CURSO: GRADS | STDC
 //UC: GR POO - 2025/2 - 35761 - Programação Orientada a Objetos
@@ -18,6 +18,8 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import model.entidade.Produto;
 
 
 

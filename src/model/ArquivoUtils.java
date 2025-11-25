@@ -1,4 +1,4 @@
-package estoque;
+package model;
 
 
 //CURSO: GRADS | STDC
@@ -13,6 +13,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.OutputStream;
+
+import model.entidade.Produto;
+
 import java.io.ObjectOutputStream;
 
 //import java

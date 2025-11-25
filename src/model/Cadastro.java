@@ -1,4 +1,4 @@
-package estoque;
+package model;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import model.entidade.Produto;
 
 //CURSO: GRADS | STDC
 //UC: GR POO - 2025/2 - 35761 - Programação Orientada a Objetos
@@ -73,6 +75,12 @@ public class Cadastro {
 		button.setPreferredSize(new Dimension(300, 80));
 		this.panel.add(button);
 	}
+	
+	private Produto criarProduto() {
+		Produto produto = new Prodduto()(texto);
+		this.textFieldQuantidade = new JTextField();
+		this.textFieldQuantidade.setPreferredSize(new Dimension(400,40));
+		this.panel.add(this.textFieldQuantidade );
 	
 }
 

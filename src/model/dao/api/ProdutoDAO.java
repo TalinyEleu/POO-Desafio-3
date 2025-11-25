@@ -1,17 +1,18 @@
-package estoque;
+package model.dao.api;
 
 //CURSO: GRADS | STDC
 //UC: GR POO - 2025/2 - 35761 - Programação Orientada a Objetos
 //DESAFIO: 3 Gerenciamento de Estoque
 //GRUPO: Nº 16
 //INTEGRANTES:(Nataliny Eleutério da Silva / Jessé Oliveira de Jesus)
-//Arquivo: classe java principal para execucao do app
+//Arquivo: interface DAO para entidade Produto.
 
-public class Principal {
-	//inicializa a interface gráfica
+
+import model.entidade.Produto;
+
+public interface ProdutoDAO extends DAO<Produto>{
 	
-	public static void main(String[] args) {
-		new TelaInicial();
-	}
-
+		public Produto buscarPorId(int id);	
 }
+
+
