@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import model.entidade.Produto;
 
 
-public class ProdutoDaoImpl {
+public class ProdutoDaoImpl implements ProdutoDAO {
 
 		private static final String INSERT = "INSERT INTO produtos (nome_produto, qt_estoque) values (?,?) ";
 		
@@ -49,5 +49,13 @@ public class ProdutoDaoImpl {
 			
 		}
 		
-		
+		public void excluirProduto(Produto produto) {
+			try (PreparedStatement ps = Conexao.getInstance().getConnection().prepareStatement(UPDATE)) {
+				ps.setInt(1, produto.getQuantidade());
+				ps.setInt(2, produto.getCodigo());
+				ps.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+				// TODO: handle exception
+			}
 }
