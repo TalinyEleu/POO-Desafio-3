@@ -14,9 +14,6 @@ public interface ProdutoDAO extends DAO<Produto>{
 	
 		public Produto buscarPorId(int id);
 		
-		public Produto atualizarPorId(int id);
-			
-		public Produto ExcluirPorId(int id);	
 }
 
 

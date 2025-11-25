@@ -30,7 +30,7 @@ public class ArquivoUtils {
 			try {
 				File file = new File(NOME_ARQUIVO_TXT);
 				fileWriter = new FileWriter(file, true);
-				String valorParaSalvar = produto.getNome() + "##" + produto.getQuantidadeEstoque()  + "\n";
+				String valorParaSalvar = produto.getNome() + "##" + produto.getQuantidade()  + "\n";
 				fileWriter.write(valorParaSalvar);
 			} catch (Exception e) {
 				//JOptionPane.showmMessageDialog(null, "Dados lançados no arquivo");

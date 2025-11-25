@@ -9,13 +9,14 @@ package model.entidade;
 // Arquivo: classe java para produto.
 
 import java.io.Serializable;
-
+ 
+@SuppressWarnings("serial")
 public class Produto implements Serializable {
 	private int codigo;
 	private String nome;
 	private int quantidade;
 	
-	public Produto(String nome, float quantidade) {
+	public Produto(String nome, int quantidade) {
 		 // construtor com Validação 
         if (nome == null || nome.trim().isEmpty()) {
         	throw new IllegalArgumentException("Nome inválido ou não informado");
@@ -28,19 +29,19 @@ public class Produto implements Serializable {
 		this.quantidade = quantidade;
 	}
 	
-	public void atualizarQuantidade(float quantidade) {
+	public void atualizarQuantidade(int quantidade) {
 		this.quantidade += quantidade;
 	}
 	
-	public void excluirEstoque(float quantidade) {
+	public void excluirEstoque(int quantidade) {
 		//desenvolver codigo;
 	}
 
-	public float getQuantidade() {
+	public int getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidadeEstoque(float quantidade) {
+	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
 
@@ -48,6 +49,10 @@ public class Produto implements Serializable {
 		return codigo;
 	}
 
+	public void setCodigo(int c) {
+		this.codigo = c;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
