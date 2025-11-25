@@ -29,6 +29,7 @@ public class CadastroProduto extends JFrame {
 	private JPanel panel;
 	private JTextField textFieldNome;
 	private JTextField textFieldQuantidade;
+	private JTextField textFieldCodProd;
 	
 	private ProdutoController produtoController;
 	
@@ -44,8 +45,9 @@ public class CadastroProduto extends JFrame {
 		this.panel.setPreferredSize(new Dimension(500,800));
 		this.add(panel);
 		
-		criarTextFieldNome("Nome do produto");
-		criarTextFieldQuantidade("Quantidada em estoque");
+		criarTextFieldCodProd("Codigo do produto");
+		criarTextFieldNome("Nome do produto (campo requerido em caso de cadastro)");
+		criarTextFieldQuantidade("Quantidada em estoque (campo requerido em caso de cadastro)");
 		
 		
 		criarBotao("Salvar", new ButtonSalvarHandler());
@@ -55,9 +57,11 @@ public class CadastroProduto extends JFrame {
 		 
 		
 		
-		setSize(new Dimension(500,500));
-		setPreferredSize(new Dimension(500,500));
-		
+		setSize(new Dimension(500,800));
+		setPreferredSize(new Dimension(500,1024));
+		setVisible(true);
+		setDefaultCloseOperation(HIDE_ON_CLOSE);
+				
 		
 	}
 	
@@ -65,6 +69,15 @@ public class CadastroProduto extends JFrame {
 		JLabel label = new JLabel(texto);
 		label.setPreferredSize(new Dimension(400,40));
 		this.panel.add(label);
+	}
+	
+	
+	private void criarTextFieldCodProd(String texto) {
+		criarLabel(texto);
+		this.textFieldCodProd = new JTextField();
+		this.textFieldCodProd.setPreferredSize(new Dimension(400,40));
+		//this.textFieldCodProd.setBounds(0,1,1,);t
+		this.panel.add(this.textFieldCodProd);
 	}
 	
 	private void criarTextFieldNome(String texto) {
@@ -93,7 +106,10 @@ public class CadastroProduto extends JFrame {
 	
 	private Produto criarObjetProduto() {
 		if(!textFieldNome.getText().isEmpty()){
-			Produto produto = new Produto(textFieldNome.getText(), Integer.parseInt(textFieldQuantidade.getText()) ); 
+			Produto produto = new Produto();
+			produto.setNome(textFieldNome.getText());
+			produto.setCodigo(Integer.parseInt(textFieldCodProd.getText()));
+			produto.setQuantidade(Integer.parseInt(textFieldQuantidade.getText()));
 			return produto;
 		}
 		return null;
@@ -110,25 +126,47 @@ public class CadastroProduto extends JFrame {
 	}
 	
 	private class ButtonSalvarHandler implements ActionListener {
-
+		//handler do botao salvar
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Produto produto = criarObjetProduto();
 			produtoController.salvar(produto);
 			limparCampos();
-			JOptionPane.showMessageDialog(null, "Cadastro Realizado com sucess");
+			JOptionPane.showMessageDialog(null, "Cadastro Realizado com sucesso");
 			
 		}
 
 	}
 	
-	private class ButtonExcluirHandler implements ActionListener {
-
+	
+	private class ButtonListarHandler implements ActionListener{
+		//handler do botao listar
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			new ListagemView();
+		}
+		
+	}
+	
+	private class ButtonBuscarPorIdHandler implements ActionListener{
+		//handler do botao buscar por id
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Produto produto = produtoController.buscarPorId(Integer.parseInt(textFieldCodProd.getText()));
+			textFieldNome.setText(String.valueOf(produto.getNome()));
+			textFieldQuantidade.setText(String.valueOf(produto.getQuantidade()));
+		}
+		
+	}
+	
+	private class ButtonExcluirHandler implements ActionListener {
+		//handler do botao excluit
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Produto produto = criarObjetProduto();
 			produtoController.excluir(Integer.parseInt(textFieldQuantidade.getText()));
 			limparCampos();
-			JOptionPane.showMessageDialog(null, "Cadastro Realizado com sucess");
+			JOptionPane.showMessageDialog(null, "Produto excluido com sucesso");
 			
 		}
 

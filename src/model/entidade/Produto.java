@@ -16,18 +16,18 @@ public class Produto implements Serializable {
 	private String nome;
 	private int quantidade;
 	
-	public Produto(String nome, int quantidade) {
+	public Produto() {
 		 // construtor com Validação 
-        if (nome == null || nome.trim().isEmpty()) {
-        	throw new IllegalArgumentException("Nome inválido ou não informado");
-        }
-        if (quantidade < 0) {
-        	throw new IllegalArgumentException("Quantidade inválida ou não informada");
-        }
+    //    if (nome == null || nome.trim().isEmpty()) {
+        	//throw new IllegalArgumentException("Nome inválido ou não informado");
+    //    }
+   //     if (quantidade < 0) {
+    //    	throw new IllegalArgumentException("Quantidade inválida ou não informada");
+ 
         
-		this.nome = nome ;
-		this.quantidade = quantidade;
-	}
+	//this.nome = nome ;
+	//	this.quantidade = quantidade;
+}
 	
 	public void atualizarQuantidade(int quantidade) {
 		this.quantidade += quantidade;
@@ -55,6 +55,10 @@ public class Produto implements Serializable {
 	
 	public String getNome() {
 		return nome;
+	}
+	
+	public void setNome(String n) {
+		this.nome = n;
 	}
 	
 	@Override

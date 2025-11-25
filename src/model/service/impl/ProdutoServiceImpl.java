@@ -12,6 +12,8 @@ package model.service.impl;
 import java.util.List;
 
 import model.dao.api.ProdutoDAO;
+import model.dao.impl.ProdutoDaoImpl;
+
 import model.entidade.Produto;
 
 import model.service.api.ProdutoService;
@@ -21,13 +23,16 @@ public class ProdutoServiceImpl implements ProdutoService {
 
 	private ProdutoDAO produtoDao;
 	
+	public ProdutoServiceImpl() {
+		this.produtoDao = new ProdutoDaoImpl();
+	}	
 	
 	@Override
 	public void salvar(Produto produto) {
 		//executa a funcao salvar apenas se o nome do produto não exceder o comprimento maximo  60caracteres
 		String name = produto.getNome();
 		if (name.length() <= 60)
-			{ this.produtoDao.salvar(produto);
+			{ produtoDao.salvar(produto);
 			
 		} else { throw new IllegalArgumentException("Comprimento de Nome excede o limite do campo");
 			
@@ -51,13 +56,13 @@ public class ProdutoServiceImpl implements ProdutoService {
 	@Override
 	public List<Produto> listarTodos() {
 		// encaminha para a camada DAO e retorna a lista com todos os produtos
-		return this.listarTodos();
+		return this.produtoDao.listarTodos();
 	}
 
 	@Override
 	public Produto buscarPorId(int id) {
 		// encaminha para a camada DAO e retorna a busca por id como instancia de produto
-		return this.buscarPorId(id);
+		return this.produtoDao.buscarPorId(id);
 		 
 		} 
 		

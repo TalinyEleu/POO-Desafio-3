@@ -22,14 +22,14 @@ public class ProdutoDaoImpl implements ProdutoDAO {
 		
 		private static final String UPDATE = "UPDATE produtos SET qt_estoque =? WHERE id_produto = ?";
 		
-		private static final String EXCLUIR = "DELETE FROM produtos WHERE id_produto = ?";
+		private static final String EXCLUIR = "DELETE FROM produtos WHERE id_produto = ?" + " COMMIT;";
 		
 		private static final String LISTAR_TODOS = "SELECT * FROM produtos";
 		
 		private static final String BUSCAR_POR_ID = "SELECT * FROM produtos WHERE id_produto = ?";
 		
 		
-
+		@Override
 		public void salvar(Produto produto) {
 			if (produto != null && produto.getCodigo()==0){
 				this.salvarProduto(produto);
@@ -45,7 +45,7 @@ public class ProdutoDaoImpl implements ProdutoDAO {
 				ps.setString(1, produto.getNome());
 				ps.setInt(2, produto.getQuantidade());
 				ps.executeUpdate();
-			} catch (Exception e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 				// TODO: handle exception
 			}
@@ -57,7 +57,7 @@ public class ProdutoDaoImpl implements ProdutoDAO {
 				ps.setInt(1, produto.getQuantidade());
 				ps.setInt(2, produto.getCodigo());
 				ps.executeUpdate();
-			} catch (Exception e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 				// TODO: handle exception
 			}
@@ -68,7 +68,7 @@ public class ProdutoDaoImpl implements ProdutoDAO {
 			try (PreparedStatement ps = Conexao.getInstance().getConnection().prepareStatement(EXCLUIR)) {
 				ps.setInt(1, produto.getCodigo());
 				ps.executeUpdate();
-			} catch (Exception e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 				// TODO: handle exception
 			}
@@ -83,13 +83,15 @@ public class ProdutoDaoImpl implements ProdutoDAO {
 				
 				//percorre o resultset retornado adicioando os elementos à lista
 				while (resultSet.next()) {
-					Produto produto = new Produto(resultSet.getString("nome_produto"), resultSet.getInt("qt_estoque"));
+					Produto produto = new Produto();
+					produto.setNome(resultSet.getString("nome_produto"));
+					produto.setQuantidade(resultSet.getInt("qt_estoque"));
 					produto.setCodigo(resultSet.getInt("id_produto"));
 					produtos.add(produto);
 				}
 
 				
-			} catch (Exception e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 				// TODO: handle exception
 			}
@@ -106,7 +108,8 @@ public class ProdutoDaoImpl implements ProdutoDAO {
 
 		@Override
 		public Produto buscarPorId(int id) {
-		Produto produto =null;
+		   // produto = null;
+			Produto produto = new Produto();
 		try (
 			PreparedStatement ps = Conexao.getInstance().getConnection().prepareStatement(BUSCAR_POR_ID);
 			){	
@@ -115,15 +118,17 @@ public class ProdutoDaoImpl implements ProdutoDAO {
 				ResultSet resultSet = ps.executeQuery();
 				){
 				while (resultSet.next()) {
-					produto = new Produto(resultSet.getString("nome_produto"), resultSet.getInt("qt_estoque"));
-					produto.setCodigo(resultSet.getInt("id_produto"));
 					
+					produto.setNome(resultSet.getString("nome_produto"));
+					produto.setQuantidade(resultSet.getInt("qt_estoque"));
+					produto.setCodigo(resultSet.getInt("id_produto"));
+
 				}
-			} catch (Exception e) {
+			} catch (SQLException e) {
 				e.printStackTrace();
 				// TODO: handle exception			
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 				e.printStackTrace();
 				// TODO: handle exception
 			}

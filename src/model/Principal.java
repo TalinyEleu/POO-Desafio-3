@@ -12,6 +12,10 @@ public class Principal {
 	
 	public static void main(String[] args) {
 		new TelaInicial();
-	}
+		//new ListagemView();
+		//new Listagem();
+		// new CadastroProduto();
 
+
+}
 }
